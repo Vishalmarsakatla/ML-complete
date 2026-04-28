@@ -1,10 +1,10 @@
 stages:
-  data_ingestion:
-    cmd: python src/data_ingestion.py
+  data_injestion:
+    cmd: python src/data_injestion.py
     deps:
-    - src/data_ingestion.py
+    - src/data_injestion.py
     params:
-    - data_ingestion.test_size
+    - data_injestion.test_size
     outs:
     - data/raw
   data_preprocessing:
@@ -23,21 +23,21 @@ stages:
     - feature_engineering.max_features
     outs:
     - data/processed
-  model_building:
-    cmd: python src/model_building.py
+  model_buliding:
+    cmd: python src/model_buliding.py
     deps:
     - data/processed
-    - src/model_building.py
+    - src/model_buliding.py
     params:
-    - model_building.n_estimators
-    - model_building.random_state
+    - model_buliding.n_estimators
+    - model_buliding.random_state
     outs:
     - models/model.pkl
-  model_evaluation:
-    cmd: python src/model_evaluation.py
+  model_evalulation:
+    cmd: python src/model_evalulation.py
     deps:
     - models/model.pkl
-    - src/model_evaluation.py
+    - src/model_evalulation.py
     metrics:
     - reports/metrics.json
 params:
